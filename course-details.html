@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - Gurrukul ગુરુકુળ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Gurrukul ગુરુકુળ</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" id="course-details">
+            <div class="loading-placeholder" id="course-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading course details...</p>
+            </div>
+
+            <div class="course-details" style="display: none;">
+                <div class="course-header">
+                    <div class="course-banner">
+                        <img src="" alt="" id="course-banner-img">
+                        <span class="badge category" id="course-category-badge"></span>
+                    </div>
+                    <div class="course-info-container">
+                        <h1 class="course-header-title" id="course-title"></h1>
+                        <div class="course-meta">
+                            <div class="course-meta-item">
+                                <i class="fas fa-signal"></i>
+                                <span id="course-level"></span>
+                            </div>
+                            <div class="course-meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span id="course-duration"></span>
+                            </div>
+                            <div class="course-meta-item">
+                                <i class="fas fa-star"></i>
+                                <span id="course-rating"></span>
+                            </div>
+                            <div class="course-meta-item">
+                                <i class="fas fa-users"></i>
+                                <span id="course-students"></span>
+                            </div>
+                            <div class="course-meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span id="course-updated"></span>
+                            </div>
+                        </div>
+                        <p id="course-short-desc"></p>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <img src="" alt="" id="instructor-img">
+                                <div>
+                                    <p>Created by</p>
+                                    <h3 id="instructor-name"></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <button class="btn enroll-btn" id="enroll-btn">Enroll Now</button>
+                            <button class="btn wishlist-btn" id="wishlist-btn">
+                                <i class="far fa-heart"></i> Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-details-container">
+                    <div class="course-details-main">
+                        <div class="course-description">
+                            <h3>Course Description</h3>
+                            <div id="course-description"></div>
+                        </div>
+
+                        <div class="course-curriculum">
+                            <h3>Course Curriculum</h3>
+                            <div id="course-sections">
+                                <!-- Course sections and lessons will be dynamically added here -->
+                            </div>
+                        </div>
+
+                        <div class="course-reviews">
+                            <h3>Student Reviews</h3>
+                            <div class="reviews-summary">
+                                <div class="average-rating">
+                                    <div class="rating-number" id="average-rating">0</div>
+                                    <div class="rating-stars" id="rating-stars"></div>
+                                    <div class="total-reviews">
+                                        <span id="total-reviews">0</span> reviews
+                                    </div>
+                                </div>
+                                <div class="rating-bars">
+                                    <div class="rating-bar-item">
+                                        <span>5 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" id="five-star-bar"></div>
+                                        </div>
+                                        <span id="five-star-percentage">0%</span>
+                                    </div>
+                                    <div class="rating-bar-item">
+                                        <span>4 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" id="four-star-bar"></div>
+                                        </div>
+                                        <span id="four-star-percentage">0%</span>
+                                    </div>
+                                    <div class="rating-bar-item">
+                                        <span>3 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" id="three-star-bar"></div>
+                                        </div>
+                                        <span id="three-star-percentage">0%</span>
+                                    </div>
+                                    <div class="rating-bar-item">
+                                        <span>2 stars</span>
+                                        <div class="bar-container">
+                                            <div class="bar" id="two-star-bar"></div>
+                                        </div>
+                                        <span id="two-star-percentage">0%</span>
+                                    </div>
+                                    <div class="rating-bar-item">
+                                        <span>1 star</span>
+                                        <div class="bar-container">
+                                            <div class="bar" id="one-star-bar"></div>
+                                        </div>
+                                        <span id="one-star-percentage">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-list" id="review-list">
+                                <!-- Reviews will be dynamically added here -->
+                            </div>
+
+                            <div class="review-form-container" id="review-form-container" style="display: none;">
+                                <h4>Leave a Review</h4>
+                                <form id="review-form">
+                                    <div class="rating-select">
+                                        <span>Your Rating:</span>
+                                        <div class="star-rating">
+                                            <i class="far fa-star" data-rating="1"></i>
+                                            <i class="far fa-star" data-rating="2"></i>
+                                            <i class="far fa-star" data-rating="3"></i>
+                                            <i class="far fa-star" data-rating="4"></i>
+                                            <i class="far fa-star" data-rating="5"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="review-text">Your Review</label>
+                                        <textarea id="review-text" name="review" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn submit-review-btn">Submit Review</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-details-sidebar">
+                        <div class="price-info">
+                            <div class="current-price" id="course-price"></div>
+                            <div class="discount-info" id="discount-info"></div>
+                        </div>
+                        <button class="sidebar-btn sidebar-enroll-btn" id="sidebar-enroll-btn">Enroll Now</button>
+                        <button class="sidebar-btn sidebar-wishlist-btn" id="sidebar-wishlist-btn">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </button>
+                        <div class="course-includes">
+                            <h4>This Course Includes:</h4>
+                            <ul class="includes-list" id="course-includes">
+                                <!-- Course includes items will be dynamically added here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Gurrukul ગુરુકુળ</h2>
+                <p>Transforming education for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@gurrukul.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Gurrukul ગુરુકુળ. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course detail initialization script -->
+    <script>
+        // Get the course slug from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('slug');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (slug) {
+                initCourseDetails(slug);
+            } else {
+                document.getElementById('course-loading').innerHTML = 
+                    '<p class="error-message">No course specified. Please go back to the courses page and select a course.</p>';
+            }
+        });
+
+        // Function to initialize course details
+        async function initCourseDetails(slug) {
+            try {
+                const course = await fetchCourseBySlug(slug);
+                displayCourseDetails(course);
+                fetchCourseReviews(course._id)
+                    .then(reviews => displayCourseReviews(reviews))
+                    .catch(error => console.error('Error fetching reviews:', error));
+                
+                // Check if user is logged in and enrolled to show review form
+                if (getAuthToken()) {
+                    fetchMyEnrollments()
+                        .then(enrollments => {
+                            const isEnrolled = enrollments.some(enrollment => 
+                                enrollment.course._id === course._id
+                            );
+                            
+                            if (isEnrolled) {
+                                document.getElementById('review-form-container').style.display = 'block';
+                                setupReviewForm(course._id);
+                            }
+                        })
+                        .catch(error => console.error('Error checking enrollment:', error));
+                }
+            } catch (error) {
+                console.error('Error initializing course details:', error);
+                document.getElementById('course-loading').innerHTML = 
+                    `<p class="error-message">Failed to load course details. ${error.message}</p>`;
+            }
+        }
+
+        // Display course details
+        function displayCourseDetails(course) {
+            // Hide loading, show course details
+            document.getElementById('course-loading').style.display = 'none';
+            document.querySelector('.course-details').style.display = 'block';
+            
+            // Set page title
+            document.title = `${course.title} - Gurrukul ગુરુકુળ`;
+            
+            // Basic course info
+            document.getElementById('course-banner-img').src = course.imageCover || 'img/default-course.jpg';
+            document.getElementById('course-banner-img').alt = course.title;
+            document.getElementById('course-category-badge').textContent = course.category;
+            document.getElementById('course-title').textContent = course.title;
+            document.getElementById('course-level').textContent = course.level;
+            document.getElementById('course-duration').textContent = `${course.duration} ${course.durationUnit}`;
+            document.getElementById('course-rating').textContent = `${course.ratingsAverage} (${course.ratingsQuantity} ratings)`;
+            document.getElementById('course-students').textContent = `${course.enrollmentCount} students`;
+            document.getElementById('course-updated').textContent = new Date(course.createdAt).toLocaleDateString();
+            document.getElementById('course-short-desc').textContent = course.description.substring(0, 150) + '...';
+            
+            // Instructor info
+            document.getElementById('instructor-img').src = course.educator.avatar || 'img/default-avatar.jpg';
+            document.getElementById('instructor-img').alt = course.educator.name;
+            document.getElementById('instructor-name').textContent = course.educator.name;
+            
+            // Full description
+            document.getElementById('course-description').innerHTML = `<p>${course.description}</p>`;
+            
+            // Price info
+            if (course.price === 0) {
+                document.getElementById('course-price').textContent = 'Free';
+                document.getElementById('discount-info').style.display = 'none';
+            } else {
+                document.getElementById('course-price').textContent = `₹${course.price}`;
+                if (course.priceDiscount && course.priceDiscount < course.price) {
+                    const discountPercentage = Math.round(((course.price - course.priceDiscount) / course.price) * 100);
+                    document.getElementById('discount-info').innerHTML = `
+                        <span class="original-price">₹${course.price}</span>
+                        <span class="discount-percentage">${discountPercentage}% off</span>
+                    `;
+                } else {
+                    document.getElementById('discount-info').style.display = 'none';
+                }
+            }
+            
+            // Course includes
+            const includesList = document.getElementById('course-includes');
+            includesList.innerHTML = `
+                <li class="includes-item"><i class="fas fa-video"></i> Full lifetime access</li>
+                <li class="includes-item"><i class="fas fa-mobile-alt"></i> Access on mobile and TV</li>
+                <li class="includes-item"><i class="fas fa-certificate"></i> Certificate of completion</li>
+            `;
+            
+            // Course curriculum sections
+            const sectionsContainer = document.getElementById('course-sections');
+            sectionsContainer.innerHTML = '';
+            
+            if (course.sections && course.sections.length > 0) {
+                course.sections.forEach((section, sectionIndex) => {
+                    const sectionElement = document.createElement('div');
+                    sectionElement.className = 'curriculum-section';
+                    
+                    // Count total duration of lessons
+                    const totalDuration = section.lessons.reduce((total, lesson) => total + (lesson.duration || 0), 0);
+                    
+                    sectionElement.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-title">${section.title}</div>
+                            <div class="section-info">
+                                <span>${section.lessons.length} lessons</span>
+                                <span>${totalDuration} min</span>
+                            </div>
+                            <button class="section-toggle">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <ul class="lesson-list">
+                            ${section.lessons.map((lesson, lessonIndex) => `
+                                <li class="lesson-item">
+                                    <div class="lesson-title">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>${lesson.title}</span>
+                                    </div>
+                                    <div class="lesson-duration">${lesson.duration || 0} min</div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    
+                    sectionsContainer.appendChild(sectionElement);
+                    
+                    // Add toggle functionality
+                    const toggle = sectionElement.querySelector('.section-toggle');
+                    const lessonList = sectionElement.querySelector('.lesson-list');
+                    
+                    toggle.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        lessonList.classList.toggle('active');
+                    });
+                    
+                    // Open first section by default
+                    if (sectionIndex === 0) {
+                        toggle.classList.add('active');
+                        lessonList.classList.add('active');
+                    }
+                });
+            } else {
+                sectionsContainer.innerHTML = '<p>No curriculum available for this course yet.</p>';
+            }
+            
+            // Set up enrollment buttons
+            const enrollButtons = document.querySelectorAll('#enroll-btn, #sidebar-enroll-btn');
+            enrollButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    try {
+                        // Check if user is logged in
+                        const token = getAuthToken();
+                        if (!token) {
+                            window.location.href = `login.html?redirect=course-details.html?slug=${course.slug}`;
+                            return;
+                        }
+                        
+                        // Attempt to enroll in course
+                        button.disabled = true;
+                        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enrolling...';
+                        
+                        await enrollInCourse(course._id);
+                        
+                        // Redirect to learning page or dashboard
+                        window.location.href = 'dashboard-student.html';
+                    } catch (error) {
+                        console.error('Error enrolling in course:', error);
+                        alert(`Error: ${error.message}`);
+                        button.disabled = false;
+                        button.textContent = 'Enroll Now';
+                    }
+                });
+            });
+        }
+
+        // Display course reviews
+        function displayCourseReviews(reviews) {
+            const reviewsList = document.getElementById('review-list');
+            const totalReviews = reviews.length;
+            
+            // Update review summary
+            document.getElementById('total-reviews').textContent = totalReviews;
+            
+            if (totalReviews > 0) {
+                // Calculate average rating
+                const averageRating = reviews.reduce((total, review) => total + review.rating, 0) / totalReviews;
+                document.getElementById('average-rating').textContent = averageRating.toFixed(1);
+                
+                // Generate star rating HTML
+                const starsHtml = generateStarRating(averageRating);
+                document.getElementById('rating-stars').innerHTML = starsHtml;
+                
+                // Calculate rating percentages
+                const ratingCounts = [0, 0, 0, 0, 0]; // 1-5 stars
+                reviews.forEach(review => {
+                    ratingCounts[review.rating - 1]++;
+                });
+                
+                // Update rating bars
+                for (let i = 0; i < 5; i++) {
+                    const percentage = Math.round((ratingCounts[i] / totalReviews) * 100);
+                    document.getElementById(`${['one', 'two', 'three', 'four', 'five'][i]}-star-bar`).style.width = `${percentage}%`;
+                    document.getElementById(`${['one', 'two', 'three', 'four', 'five'][i]}-star-percentage`).textContent = `${percentage}%`;
+                }
+                
+                // Display reviews
+                reviewsList.innerHTML = '';
+                reviews.forEach(review => {
+                    const reviewDate = new Date(review.createdAt).toLocaleDateString();
+                    const reviewEl = document.createElement('div');
+                    reviewEl.className = 'review-item';
+                    reviewEl.innerHTML = `
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <img src="${review.student.avatar || 'img/default-avatar.jpg'}" alt="${review.student.name}">
+                                <div>
+                                    <h4>${review.student.name}</h4>
+                                    <p>${reviewDate}</p>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                ${generateStarRating(review.rating)}
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>${review.review}</p>
+                        </div>
+                    `;
+                    reviewsList.appendChild(reviewEl);
+                });
+            } else {
+                reviewsList.innerHTML = '<p class="no-reviews">No reviews for this course yet.</p>';
+            }
+        }
+
+        // Generate HTML for star rating
+        function generateStarRating(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            
+            let starsHtml = '';
+            
+            // Full stars
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += '<i class="fas fa-star"></i>';
+            }
+            
+            // Half star
+            if (halfStar) {
+                starsHtml += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            // Empty stars
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += '<i class="far fa-star"></i>';
+            }
+            
+            return starsHtml;
+        }
+
+        // Setup review form
+        function setupReviewForm(courseId) {
+            const form = document.getElementById('review-form');
+            const stars = document.querySelectorAll('.star-rating i');
+            let selectedRating = 0;
+            
+            // Handle star rating selection
+            stars.forEach(star => {
+                star.addEventListener('mouseover', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    highlightStars(rating);
+                });
+                
+                star.addEventListener('mouseout', function() {
+                    highlightStars(selectedRating);
+                });
+                
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.getAttribute('data-rating'));
+                    highlightStars(selectedRating);
+                });
+            });
+            
+            // Highlight stars based on rating
+            function highlightStars(rating) {
+                stars.forEach(star => {
+                    const starRating = parseInt(star.getAttribute('data-rating'));
+                    if (starRating <= rating) {
+                        star.className = 'fas fa-star';
+                    } else {
+                        star.className = 'far fa-star';
+                    }
+                });
+            }
+            
+            // Handle form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (selectedRating === 0) {
+                    alert('Please select a rating');
+                    return;
+                }
+                
+                const reviewText = document.getElementById('review-text').value.trim();
+                if (!reviewText) {
+                    alert('Please enter your review');
+                    return;
+                }
+                
+                try {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    
+                    await submitReview(courseId, {
+                        rating: selectedRating,
+                        review: reviewText
+                    });
+                    
+                    alert('Thank you for your review!');
+                    form.reset();
+                    selectedRating = 0;
+                    highlightStars(0);
+                    
+                    // Refresh reviews
+                    const reviews = await getCourseReviews(courseId);
+                    displayCourseReviews(reviews);
+                } catch (error) {
+                    console.error('Error submitting review:', error);
+                    alert(`Error: ${error.message}`);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Review';
+                }
+            });
+        }
+    </script>
+
+    <script src="js/auth.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 

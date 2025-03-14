@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Gurrukul ગુરુકુળ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Gurrukul ગુરુકુળ</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html" class="active">Courses</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1>Explore Our Courses</h1>
+                <p>Discover a wide range of courses to enhance your skills and knowledge</p>
+            </div>
+        </section>
+
+        <!-- Featured Categories Section -->
+        <section class="featured-categories container">
+            <h2 class="section-title">Featured Categories</h2>
+            <div class="category-cards">
+                <div class="category-card coding">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Coding</h3>
+                    <p>Learn programming languages and software development</p>
+                    <a href="#coding-courses" class="category-link">Explore Courses</a>
+                </div>
+                <div class="category-card farming">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Farming</h3>
+                    <p>Traditional and modern agricultural techniques</p>
+                    <a href="#farming-courses" class="category-link">Explore Courses</a>
+                </div>
+                <div class="category-card cooking">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Cooking</h3>
+                    <p>Master culinary arts and cooking traditions</p>
+                    <a href="#cooking-courses" class="category-link">Explore Courses</a>
+                </div>
+                <div class="category-card carpentry">
+                    <div class="category-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Carpentry</h3>
+                    <p>Woodworking and furniture crafting skills</p>
+                    <a href="#carpentry-courses" class="category-link">Explore Courses</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="courses-page">
+            <div class="filters-container">
+                <form id="course-filters" class="filter-form">
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="">All Categories</option>
+                            <option value="Coding">Coding</option>
+                            <option value="Farming">Farming</option>
+                            <option value="Cooking">Cooking</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="Business">Business</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Science">Science</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Languages">Languages</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="level">Level</label>
+                        <select id="level" name="level">
+                            <option value="">All Levels</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="price">Price</label>
+                        <select id="price" name="price">
+                            <option value="">All Prices</option>
+                            <option value="free">Free</option>
+                            <option value="paid">Paid</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sort">Sort By</label>
+                        <select id="sort" name="sort">
+                            <option value="-createdAt">Newest</option>
+                            <option value="price">Price: Low to High</option>
+                            <option value="-price">Price: High to Low</option>
+                            <option value="-ratingsAverage">Highest Rated</option>
+                            <option value="-enrollmentCount">Most Popular</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button type="reset" class="filter-btn reset">Reset Filters</button>
+                        <button type="submit" class="filter-btn">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Category-specific course sections -->
+            <section id="coding-courses" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">Coding Courses</h2>
+                    <div class="category-description">
+                        <p>Develop practical programming skills with our industry-relevant coding courses.</p>
+                    </div>
+                </div>
+                <div class="category-courses" id="coding-courses-container">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading coding courses...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="farming-courses" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">Farming Courses</h2>
+                    <div class="category-description">
+                        <p>Learn sustainable agricultural practices from experienced farmers.</p>
+                    </div>
+                </div>
+                <div class="category-courses" id="farming-courses-container">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading farming courses...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cooking-courses" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">Cooking Courses</h2>
+                    <div class="category-description">
+                        <p>Master culinary techniques and traditional recipes with our expert chefs.</p>
+                    </div>
+                </div>
+                <div class="category-courses" id="cooking-courses-container">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading cooking courses...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="carpentry-courses" class="category-section">
+                <div class="category-header">
+                    <h2 class="category-title">Carpentry Courses</h2>
+                    <div class="category-description">
+                        <p>Build practical woodworking skills with our hands-on carpentry courses.</p>
+                    </div>
+                </div>
+                <div class="category-courses" id="carpentry-courses-container">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading carpentry courses...</p>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="section-title">All Courses</h2>
+            <div id="courses-container" class="courses-container">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading courses...</p>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="pagination-btn prev" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="pagination-pages">
+                    <span class="current-page">1</span> of <span class="total-pages">1</span>
+                </div>
+                <button class="pagination-btn next" disabled>
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Gurrukul ગુરુકુળ</h2>
+                <p>Transforming education for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@gurrukul.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Gurrukul ગુરુકુળ. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Initialize category sections when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load category-specific courses
+            initCategorySection('Coding');
+            initCategorySection('Farming');
+            initCategorySection('Cooking');
+            initCategorySection('Carpentry');
+        });
+
+        // Function to initialize a specific category section
+        async function initCategorySection(category) {
+            try {
+                const containerID = `${category.toLowerCase()}-courses-container`;
+                const container = document.getElementById(containerID);
+                
+                if (!container) return;
+                
+                const courses = await fetchCoursesByCategory(category);
+                
+                container.innerHTML = '';
+                if (courses.length === 0) {
+                    container.innerHTML = `<p class="no-results">No ${category} courses available yet.</p>`;
+                    return;
+                }
+                
+                courses.forEach(course => {
+                    container.innerHTML += createCourseCard(course);
+                });
+            } catch (error) {
+                console.error(`Error loading ${category} courses:`, error);
+                const containerID = `${category.toLowerCase()}-courses-container`;
+                document.getElementById(containerID).innerHTML = 
+                    `<p class="error-message">Failed to load ${category} courses. ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html> 

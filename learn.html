@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Learning - Gurrukul ગુરુકુળ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/courses.css">
+    <link rel="stylesheet" href="css/learn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Gurrukul ગુરુકુળ</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="dashboard-student.html">My Learning</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <a href="profile.html" class="user-profile">
+                    <img src="img/default-avatar.jpg" alt="User Profile" id="user-avatar">
+                    <span id="user-name">Student</span>
+                </a>
+                <a href="#" id="logout-btn" class="btn btn-logout">Logout</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="learn-container">
+        <div class="loading-placeholder" id="course-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading your course...</p>
+        </div>
+
+        <div class="learn-content" id="learn-content" style="display: none;">
+            <!-- Course Header -->
+            <div class="course-learn-header">
+                <div class="course-info">
+                    <h1 id="course-title">Course Title</h1>
+                    <div class="course-meta">
+                        <div class="educator-info" id="educator-info">
+                            <img src="img/default-avatar.jpg" alt="Educator" id="educator-avatar">
+                            <span id="educator-name">Educator Name</span>
+                        </div>
+                        <div class="progress-indicator">
+                            <div class="progress-bar">
+                                <div class="progress" id="course-progress" style="width: 0%"></div>
+                            </div>
+                            <span id="progress-text">0% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-actions">
+                    <button id="notes-btn" class="action-btn">
+                        <i class="fas fa-sticky-note"></i> Notes
+                    </button>
+                    <button id="certificate-btn" class="action-btn" disabled>
+                        <i class="fas fa-certificate"></i> Get Certificate
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Learning Area -->
+            <div class="learn-grid">
+                <!-- Curriculum Sidebar -->
+                <aside class="curriculum-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Course Curriculum</h3>
+                        <button id="toggle-sidebar" class="toggle-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
+                    <div class="search-curriculum">
+                        <input type="text" placeholder="Search in course" id="search-lessons">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="curriculum-sections" id="curriculum-sections">
+                        <!-- Sections will be dynamically added here -->
+                    </div>
+                </aside>
+
+                <!-- Lesson Content Area -->
+                <div class="lesson-content-area">
+                    <!-- Lesson Navigation -->
+                    <div class="lesson-navigation">
+                        <button id="prev-lesson" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <div class="lesson-title-nav" id="current-lesson-title">
+                            Welcome to the Course
+                        </div>
+                        <button id="next-lesson" class="nav-btn">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Lesson Content -->
+                    <div class="lesson-content" id="lesson-content">
+                        <div class="welcome-screen" id="welcome-screen">
+                            <div class="welcome-header">
+                                <h2>Welcome to the Course!</h2>
+                                <p>We're excited to have you as a student. Let's start learning!</p>
+                            </div>
+                            <div class="course-overview">
+                                <div class="overview-item">
+                                    <i class="fas fa-book"></i>
+                                    <div>
+                                        <h3>Course Content</h3>
+                                        <p id="content-summary">This course includes X sections and Y lessons.</p>
+                                    </div>
+                                </div>
+                                <div class="overview-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h3>Duration</h3>
+                                        <p id="duration-summary">Approximately X hours to complete</p>
+                                    </div>
+                                </div>
+                                <div class="overview-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <h3>What You'll Learn</h3>
+                                        <ul id="learning-objectives">
+                                            <!-- Will be populated dynamically -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="start-course-btn-container">
+                                <button id="start-course-btn" class="start-course-btn">
+                                    Start Learning
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Video Lesson Template (will be populated dynamically) -->
+                        <div class="video-lesson" id="video-lesson-template" style="display: none;">
+                            <div class="video-container">
+                                <div class="video-player" id="video-player">
+                                    <!-- Video iframe will be inserted here -->
+                                </div>
+                            </div>
+                            <div class="lesson-details">
+                                <h2 class="lesson-title" id="video-lesson-title">Lesson Title</h2>
+                                <div class="lesson-description" id="video-lesson-description">
+                                    <!-- Lesson description will be inserted here -->
+                                </div>
+                                <div class="completion-actions">
+                                    <button class="complete-lesson-btn" id="complete-video-lesson">
+                                        Mark as Completed
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text Lesson Template (will be populated dynamically) -->
+                        <div class="text-lesson" id="text-lesson-template" style="display: none;">
+                            <div class="lesson-text-content" id="text-lesson-content">
+                                <!-- Lesson content will be inserted here -->
+                            </div>
+                            <div class="completion-actions">
+                                <button class="complete-lesson-btn" id="complete-text-lesson">
+                                    Mark as Completed
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Template (will be populated dynamically) -->
+                        <div class="quiz-container" id="quiz-template" style="display: none;">
+                            <div class="quiz-header">
+                                <h2 id="quiz-title">Quiz Title</h2>
+                                <p id="quiz-description">Quiz description will appear here.</p>
+                            </div>
+                            <div class="quiz-progress">
+                                <div class="quiz-progress-bar">
+                                    <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                                </div>
+                                <div class="quiz-progress-text">
+                                    Question <span id="current-question">1</span> of <span id="total-questions">10</span>
+                                </div>
+                            </div>
+                            <div class="quiz-questions" id="quiz-questions">
+                                <!-- Questions will be inserted here -->
+                            </div>
+                            <div class="quiz-navigation">
+                                <button id="quiz-prev" class="quiz-nav-btn" disabled>Previous</button>
+                                <button id="quiz-next" class="quiz-nav-btn">Next</button>
+                                <button id="quiz-submit" class="quiz-submit-btn" style="display: none;">Submit Quiz</button>
+                            </div>
+                            <div class="quiz-results" id="quiz-results" style="display: none;">
+                                <!-- Quiz results will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Footer -->
+                    <div class="lesson-footer">
+                        <div class="lesson-resources" id="lesson-resources">
+                            <h4>Resources</h4>
+                            <ul id="resources-list">
+                                <!-- Resources will be dynamically added here -->
+                            </ul>
+                        </div>
+                        <div class="lesson-notes" id="lesson-notes">
+                            <h4>Your Notes</h4>
+                            <textarea id="notes-area" placeholder="Write your notes here..."></textarea>
+                            <button id="save-notes" class="save-notes-btn">Save Notes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Sidebar (Hidden by default) -->
+            <div class="notes-sidebar" id="notes-sidebar">
+                <div class="notes-header">
+                    <h3>Your Course Notes</h3>
+                    <button id="close-notes" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="notes-content" id="all-notes">
+                    <!-- Notes from all lessons will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Gurrukul ગુરુકુળ</h2>
+                <p>Transforming education for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@gurrukul.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learning City</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Gurrukul ગુરુકુળ. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/courses.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            const token = getAuthToken();
+            if (!token) {
+                window.location.href = 'login.html?redirect=learn.html';
+                return;
+            }
+
+            // Get enrollment ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const enrollmentId = urlParams.get('enrollment');
+            
+            if (!enrollmentId) {
+                document.getElementById('course-loading').innerHTML = 
+                    '<p class="error-message">No course specified. Please go back to your dashboard and select a course.</p>';
+                return;
+            }
+
+            // Initialize the learning interface
+            initLearningInterface(enrollmentId);
+        });
+
+        // Initialize the learning interface
+        async function initLearningInterface(enrollmentId) {
+            try {
+                // Fetch enrollment data
+                const enrollment = await fetchEnrollment(enrollmentId);
+                const course = enrollment.course;
+                
+                // Update page title
+                document.title = `${course.title} - Learning - Gurrukul ગુરુકુળ`;
+                
+                // Hide loading spinner, show content
+                document.getElementById('course-loading').style.display = 'none';
+                document.getElementById('learn-content').style.display = 'flex';
+                
+                // Populate course header
+                document.getElementById('course-title').textContent = course.title;
+                document.getElementById('educator-avatar').src = course.educator.avatar || 'img/default-avatar.jpg';
+                document.getElementById('educator-name').textContent = course.educator.name;
+                
+                // Update progress
+                const progressPercent = enrollment.progress || 0;
+                document.getElementById('course-progress').style.width = `${progressPercent}%`;
+                document.getElementById('progress-text').textContent = `${progressPercent}% Complete`;
+                
+                // Enable certificate button if progress is 100%
+                if (progressPercent === 100) {
+                    document.getElementById('certificate-btn').disabled = false;
+                }
+                
+                // Populate course overview
+                const totalSections = course.sections.length;
+                const totalLessons = course.sections.reduce((total, section) => total + section.lessons.length, 0);
+                document.getElementById('content-summary').textContent = 
+                    `This course includes ${totalSections} sections and ${totalLessons} lessons.`;
+                
+                // Calculate total duration
+                const totalDuration = course.sections.reduce((total, section) => {
+                    return total + section.lessons.reduce((lessonTotal, lesson) => lessonTotal + (lesson.duration || 0), 0);
+                }, 0);
+                
+                document.getElementById('duration-summary').textContent = 
+                    `Approximately ${totalDuration} minutes to complete`;
+                
+                // Populate learning objectives
+                const objectivesList = document.getElementById('learning-objectives');
+                if (course.learningObjectives && course.learningObjectives.length > 0) {
+                    course.learningObjectives.forEach(objective => {
+                        const li = document.createElement('li');
+                        li.textContent = objective;
+                        objectivesList.appendChild(li);
+                    });
+                } else {
+                    // Default learning objectives if none specified
+                    const defaultObjectives = [
+                        `Master the fundamentals of ${course.category}`,
+                        'Gain practical skills through hands-on exercises',
+                        'Complete real-world projects to build your portfolio',
+                        'Earn a certificate of completion'
+                    ];
+                    
+                    defaultObjectives.forEach(objective => {
+                        const li = document.createElement('li');
+                        li.textContent = objective;
+                        objectivesList.appendChild(li);
+                    });
+                }
+                
+                // Populate curriculum sidebar
+                renderCurriculum(course.sections, enrollment.completedLessons || []);
+                
+                // Setup start course button
+                document.getElementById('start-course-btn').addEventListener('click', function() {
+                    // Find the first uncompleted lesson and navigate to it
+                    const firstUncompletedLesson = findFirstUncompletedLesson(course.sections, enrollment.completedLessons || []);
+                    if (firstUncompletedLesson) {
+                        navigateToLesson(firstUncompletedLesson.sectionId, firstUncompletedLesson.lessonId);
+                    } else {
+                        // If all completed, go to the first lesson
+                        navigateToLesson(course.sections[0].id, course.sections[0].lessons[0].id);
+                    }
+                });
+                
+                // Setup certificate button
+                document.getElementById('certificate-btn').addEventListener('click', async function() {
+                    if (progressPercent === 100) {
+                        try {
+                            const certificate = await requestCertificate(enrollmentId);
+                            alert('Congratulations! Your certificate has been generated. Check your profile to download it.');
+                        } catch (error) {
+                            console.error('Error requesting certificate:', error);
+                            alert('Error generating certificate. Please try again later.');
+                        }
+                    }
+                });
+                
+                // Setup notes button
+                document.getElementById('notes-btn').addEventListener('click', function() {
+                    document.getElementById('notes-sidebar').classList.add('active');
+                });
+                
+                document.getElementById('close-notes').addEventListener('click', function() {
+                    document.getElementById('notes-sidebar').classList.remove('active');
+                });
+                
+                // Setup toggle sidebar button
+                document.getElementById('toggle-sidebar').addEventListener('click', function() {
+                    document.querySelector('.learn-grid').classList.toggle('sidebar-collapsed');
+                    this.querySelector('i').classList.toggle('fa-chevron-left');
+                    this.querySelector('i').classList.toggle('fa-chevron-right');
+                });
+                
+                // Setup search functionality
+                document.getElementById('search-lessons').addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase().trim();
+                    searchLessons(searchTerm, course.sections);
+                });
+                
+                // Save notes functionality
+                document.getElementById('save-notes').addEventListener('click', function() {
+                    const notes = document.getElementById('notes-area').value;
+                    const currentLesson = getCurrentLesson();
+                    if (currentLesson) {
+                        saveNotes(enrollmentId, currentLesson.sectionId, currentLesson.lessonId, notes);
+                    }
+                });
+                
+                // Navigation buttons functionality
+                document.getElementById('prev-lesson').addEventListener('click', function() {
+                    navigateToPreviousLesson();
+                });
+                
+                document.getElementById('next-lesson').addEventListener('click', function() {
+                    navigateToNextLesson();
+                });
+                
+            } catch (error) {
+                console.error('Error initializing learning interface:', error);
+                document.getElementById('course-loading').innerHTML = 
+                    `<p class="error-message">Failed to load course. ${error.message}</p>`;
+            }
+        }
+        
+        // Render the curriculum sidebar
+        function renderCurriculum(sections, completedLessons) {
+            const curriculumContainer = document.getElementById('curriculum-sections');
+            curriculumContainer.innerHTML = '';
+            
+            sections.forEach(section => {
+                const sectionElement = document.createElement('div');
+                sectionElement.className = 'curriculum-section';
+                
+                // Calculate completion percentage for this section
+                const totalLessons = section.lessons.length;
+                const completedInSection = section.lessons.filter(lesson => 
+                    completedLessons.some(completed => completed.lessonId === lesson.id)
+                ).length;
+                
+                const completionPercent = totalLessons > 0 ? Math.round((completedInSection / totalLessons) * 100) : 0;
+                
+                sectionElement.innerHTML = `
+                    <div class="section-header">
+                        <div class="section-info">
+                            <h4 class="section-title">${section.title}</h4>
+                            <div class="section-progress">
+                                <div class="section-progress-bar">
+                                    <div class="section-progress-fill" style="width: ${completionPercent}%"></div>
+                                </div>
+                                <span>${completedInSection}/${totalLessons}</span>
+                            </div>
+                        </div>
+                        <button class="section-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="lesson-list">
+                        ${section.lessons.map(lesson => {
+                            const isCompleted = completedLessons.some(completed => completed.lessonId === lesson.id);
+                            const lessonType = lesson.type || 'text';
+                            let icon = 'fa-file-alt';
+                            
+                            if (lessonType === 'video') icon = 'fa-play-circle';
+                            else if (lessonType === 'quiz') icon = 'fa-question-circle';
+                            
+                            return `
+                                <li class="lesson-item ${isCompleted ? 'completed' : ''}" 
+                                    data-section-id="${section.id}" 
+                                    data-lesson-id="${lesson.id}"
+                                    data-lesson-type="${lessonType}">
+                                    <div class="lesson-link">
+                                        <i class="fas ${icon}"></i>
+                                        <span>${lesson.title}</span>
+                                        ${isCompleted ? '<i class="fas fa-check-circle completion-icon"></i>' : ''}
+                                    </div>
+                                    <span class="lesson-duration">${lesson.duration || 0} min</span>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                `;
+                
+                curriculumContainer.appendChild(sectionElement);
+                
+                // Add click handlers to section toggles
+                const toggle = sectionElement.querySelector('.section-toggle');
+                const lessonList = sectionElement.querySelector('.lesson-list');
+                
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    this.querySelector('i').classList.toggle('fa-chevron-down');
+                    this.querySelector('i').classList.toggle('fa-chevron-up');
+                    lessonList.classList.toggle('active');
+                });
+                
+                // Add click handlers to lesson items
+                const lessonItems = sectionElement.querySelectorAll('.lesson-item');
+                lessonItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const sectionId = this.getAttribute('data-section-id');
+                        const lessonId = this.getAttribute('data-lesson-id');
+                        navigateToLesson(sectionId, lessonId);
+                    });
+                });
+            });
+            
+            // Open the first section by default
+            if (sections.length > 0) {
+                const firstSection = curriculumContainer.querySelector('.curriculum-section');
+                firstSection.querySelector('.section-toggle').classList.add('active');
+                firstSection.querySelector('.section-toggle i').classList.remove('fa-chevron-down');
+                firstSection.querySelector('.section-toggle i').classList.add('fa-chevron-up');
+                firstSection.querySelector('.lesson-list').classList.add('active');
+            }
+        }
+        
+        // Find the first uncompleted lesson
+        function findFirstUncompletedLesson(sections, completedLessons) {
+            for (const section of sections) {
+                for (const lesson of section.lessons) {
+                    const isCompleted = completedLessons.some(completed => completed.lessonId === lesson.id);
+                    if (!isCompleted) {
+                        return {
+                            sectionId: section.id,
+                            lessonId: lesson.id,
+                            section: section,
+                            lesson: lesson
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+        
+        // Navigate to a specific lesson
+        function navigateToLesson(sectionId, lessonId) {
+            // Update the current lesson in the UI
+            // This is a placeholder - actual implementation would depend on your data structure
+            console.log(`Navigating to section ${sectionId}, lesson ${lessonId}`);
+            
+            // For now, just hide the welcome screen
+            document.getElementById('welcome-screen').style.display = 'none';
+            
+            // Show a placeholder lesson content (this would be replaced with actual lesson content)
+            const lessonItem = document.querySelector(`.lesson-item[data-section-id="${sectionId}"][data-lesson-id="${lessonId}"]`);
+            if (lessonItem) {
+                // Remove 'active' class from all lesson items
+                document.querySelectorAll('.lesson-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add 'active' class to the selected lesson
+                lessonItem.classList.add('active');
+                
+                // Update the current lesson title in the navigation
+                document.getElementById('current-lesson-title').textContent = lessonItem.querySelector('span').textContent;
+                
+                // Determine lesson type and show the appropriate template
+                const lessonType = lessonItem.getAttribute('data-lesson-type');
+                
+                // Hide all lesson templates
+                document.getElementById('video-lesson-template').style.display = 'none';
+                document.getElementById('text-lesson-template').style.display = 'none';
+                document.getElementById('quiz-template').style.display = 'none';
+                
+                // Show the appropriate template based on lesson type
+                if (lessonType === 'video') {
+                    document.getElementById('video-lesson-template').style.display = 'block';
+                    // In a real implementation, you would load the video content here
+                } else if (lessonType === 'quiz') {
+                    document.getElementById('quiz-template').style.display = 'block';
+                    // In a real implementation, you would load the quiz content here
+                } else {
+                    // Default to text lesson
+                    document.getElementById('text-lesson-template').style.display = 'block';
+                    // In a real implementation, you would load the text content here
+                }
+                
+                // Update navigation buttons based on current position
+                updateNavigationButtons(sectionId, lessonId);
+            }
+        }
+        
+        // Update navigation buttons based on current position
+        function updateNavigationButtons(currentSectionId, currentLessonId) {
+            const prevButton = document.getElementById('prev-lesson');
+            const nextButton = document.getElementById('next-lesson');
+            
+            const prevLesson = getPreviousLesson(currentSectionId, currentLessonId);
+            const nextLesson = getNextLesson(currentSectionId, currentLessonId);
+            
+            prevButton.disabled = !prevLesson;
+            nextButton.disabled = !nextLesson;
+        }
+        
+        // Get the previous lesson
+        function getPreviousLesson(currentSectionId, currentLessonId) {
+            // This is a placeholder - actual implementation would depend on your data structure
+            // In a real implementation, you would determine the previous lesson based on the current one
+            return false; // For now, just return false to indicate no previous lesson
+        }
+        
+        // Get the next lesson
+        function getNextLesson(currentSectionId, currentLessonId) {
+            // This is a placeholder - actual implementation would depend on your data structure
+            // In a real implementation, you would determine the next lesson based on the current one
+            return false; // For now, just return false to indicate no next lesson
+        }
+        
+        // Navigate to the previous lesson
+        function navigateToPreviousLesson() {
+            const currentLesson = getCurrentLesson();
+            if (currentLesson) {
+                const prevLesson = getPreviousLesson(currentLesson.sectionId, currentLesson.lessonId);
+                if (prevLesson) {
+                    navigateToLesson(prevLesson.sectionId, prevLesson.lessonId);
+                }
+            }
+        }
+        
+        // Navigate to the next lesson
+        function navigateToNextLesson() {
+            const currentLesson = getCurrentLesson();
+            if (currentLesson) {
+                const nextLesson = getNextLesson(currentLesson.sectionId, currentLesson.lessonId);
+                if (nextLesson) {
+                    navigateToLesson(nextLesson.sectionId, nextLesson.lessonId);
+                }
+            }
+        }
+        
+        // Get the current lesson
+        function getCurrentLesson() {
+            const activeLesson = document.querySelector('.lesson-item.active');
+            if (activeLesson) {
+                return {
+                    sectionId: activeLesson.getAttribute('data-section-id'),
+                    lessonId: activeLesson.getAttribute('data-lesson-id')
+                };
+            }
+            return null;
+        }
+        
+        // Search lessons in the curriculum
+        function searchLessons(searchTerm, sections) {
+            const lessonItems = document.querySelectorAll('.lesson-item');
+            
+            if (!searchTerm) {
+                // If search term is empty, show all lessons
+                lessonItems.forEach(item => {
+                    item.style.display = 'flex';
+                });
+                
+                // Show all sections
+                document.querySelectorAll('.curriculum-section').forEach(section => {
+                    section.style.display = 'block';
+                });
+                
+                return;
+            }
+            
+            // Hide all lessons first
+            lessonItems.forEach(item => {
+                item.style.display = 'none';
+            });
+            
+            // Show lessons that match the search term
+            lessonItems.forEach(item => {
+                const lessonTitle = item.querySelector('span').textContent.toLowerCase();
+                if (lessonTitle.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                    
+                    // Show the parent section
+                    const sectionElement = item.closest('.curriculum-section');
+                    sectionElement.style.display = 'block';
+                    
+                    // Expand the section if collapsed
+                    const lessonList = sectionElement.querySelector('.lesson-list');
+                    lessonList.classList.add('active');
+                    
+                    const toggle = sectionElement.querySelector('.section-toggle');
+                    toggle.classList.add('active');
+                    toggle.querySelector('i').classList.remove('fa-chevron-down');
+                    toggle.querySelector('i').classList.add('fa-chevron-up');
+                }
+            });
+            
+            // Hide sections with no matching lessons
+            document.querySelectorAll('.curriculum-section').forEach(section => {
+                const visibleLessons = section.querySelectorAll('.lesson-item[style="display: flex;"]');
+                if (visibleLessons.length === 0) {
+                    section.style.display = 'none';
+                }
+            });
+        }
+        
+        // Save notes for a lesson
+        function saveNotes(enrollmentId, sectionId, lessonId, notes) {
+            // This is a placeholder - actual implementation would depend on your backend
+            // In a real implementation, you would save the notes to the server
+            localStorage.setItem(`notes_${enrollmentId}_${sectionId}_${lessonId}`, notes);
+            alert('Notes saved successfully!');
+            
+            // Update the notes sidebar
+            updateNotesSidebar();
+        }
+        
+        // Update the notes sidebar
+        function updateNotesSidebar() {
+            // This is a placeholder - actual implementation would depend on your data structure
+            // In a real implementation, you would fetch all notes from the server
+            const notesContainer = document.getElementById('all-notes');
+            notesContainer.innerHTML = '<p>Your notes will appear here.</p>';
+        }
+    </script>
+</body>
+</html> 

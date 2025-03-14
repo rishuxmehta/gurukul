@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Gurukul ગુરુકુળ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <h2>Gurukul ગુરુકુળ</h2>
+                </div>
+                <button class="sidebar-close" id="sidebarClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="images/avatar-placeholder.jpg" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h3 class="user-name">John Doe</h3>
+                    <p class="user-role">Student</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard-student.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-book"></i>
+                            <span>My Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assignments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                            <span class="badge">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li class="logout">
+                        <a href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <nav class="dashboard-topnav">
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="search" placeholder="Search for courses...">
+                </div>
+                <div class="topnav-right">
+                    <div class="dropdown">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge">3</span>
+                        </button>
+                        <div class="dropdown-content notification-dropdown">
+                            <div class="dropdown-header">
+                                <h3>Notifications</h3>
+                                <a href="#" class="mark-all">Mark all as read</a>
+                            </div>
+                            <ul class="notification-list">
+                                <li class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>New assignment posted in <strong>Web Development</strong></p>
+                                        <span class="notification-time">2 hours ago</span>
+                                    </div>
+                                    <div class="notification-action">
+                                        <button><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </li>
+                                <li class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>New feedback received on your <strong>JavaScript</strong> assignment</p>
+                                        <span class="notification-time">1 day ago</span>
+                                    </div>
+                                    <div class="notification-action">
+                                        <button><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </li>
+                                <li class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-certificate"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p>You've earned a <strong>Certificate</strong> in HTML & CSS Basics</p>
+                                        <span class="notification-time">3 days ago</span>
+                                    </div>
+                                    <div class="notification-action">
+                                        <button><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="message-btn">
+                            <i class="fas fa-envelope"></i>
+                            <span class="badge">2</span>
+                        </button>
+                        <div class="dropdown-content message-dropdown">
+                            <div class="dropdown-header">
+                                <h3>Messages</h3>
+                                <a href="#" class="mark-all">Mark all as read</a>
+                            </div>
+                            <ul class="message-list">
+                                <li class="message-item unread">
+                                    <div class="message-avatar">
+                                        <img src="images/avatar-placeholder.jpg" alt="Instructor Avatar">
+                                    </div>
+                                    <div class="message-content">
+                                        <h4>Dr. Sarah Johnson</h4>
+                                        <p>I've reviewed your latest project...</p>
+                                        <span class="message-time">3 hours ago</span>
+                                    </div>
+                                </li>
+                                <li class="message-item unread">
+                                    <div class="message-avatar">
+                                        <img src="images/avatar-placeholder.jpg" alt="Classmate Avatar">
+                                    </div>
+                                    <div class="message-content">
+                                        <h4>Michael Wilson</h4>
+                                        <p>Hey, do you want to form a study group...</p>
+                                        <span class="message-time">Yesterday</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="dropdown-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown user-dropdown">
+                        <button class="user-btn">
+                            <img src="images/avatar-placeholder.jpg" alt="User Avatar">
+                            <span>John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content user-dropdown-content">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
+                                <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                                <li><a href="#" id="logoutBtn2"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <section class="welcome-section">
+                    <div class="welcome-card">
+                        <div class="welcome-info">
+                            <h1>Welcome back, John Doe!</h1>
+                            <p>Continue your learning journey. You're making great progress!</p>
+                            <div class="welcome-stats">
+                                <div class="stat">
+                                    <i class="fas fa-book-open"></i>
+                                    <div>
+                                        <span>5</span>
+                                        <p>Enrolled Courses</p>
+                                    </div>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-tasks"></i>
+                                    <div>
+                                        <span>3</span>
+                                        <p>Pending Assignments</p>
+                                    </div>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-certificate"></i>
+                                    <div>
+                                        <span>2</span>
+                                        <p>Certificates Earned</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Resume Learning</button>
+                        </div>
+                        <div class="welcome-image">
+                            <img src="images/student-dashboard.svg" alt="Student Dashboard">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="progress-section">
+                    <div class="section-header">
+                        <h2>Your Learning Progress</h2>
+                        <div class="dropdown">
+                            <button class="filter-btn">
+                                <span>This Month</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-content filter-dropdown">
+                                <ul>
+                                    <li><a href="#">This Week</a></li>
+                                    <li><a href="#">This Month</a></li>
+                                    <li><a href="#">This Year</a></li>
+                                    <li><a href="#">All Time</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-overview">
+                        <div class="progress-card">
+                            <div class="progress-top">
+                                <div class="progress-info">
+                                    <h3>Overall Completion</h3>
+                                    <p>65% of all courses</p>
+                                </div>
+                                <div class="progress-chart">
+                                    <div class="circular-progress" data-percentage="65">
+                                        <svg>
+                                            <circle class="progress-bg" cx="60" cy="60" r="54"></circle>
+                                            <circle class="progress-fill" cx="60" cy="60" r="54"></circle>
+                                        </svg>
+                                        <div class="percentage">65%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-detail">
+                                <div class="detail-item">
+                                    <span class="detail-label">Hours Spent</span>
+                                    <span class="detail-value">42.5h</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Lessons Completed</span>
+                                    <span class="detail-value">24/35</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Average Score</span>
+                                    <span class="detail-value">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="streak-card">
+                            <div class="streak-header">
+                                <h3>Learning Streak</h3>
+                                <span class="streak-count">5 days</span>
+                            </div>
+                            <div class="streak-calendar">
+                                <div class="day">
+                                    <span>M</span>
+                                    <div class="day-circle active"></div>
+                                </div>
+                                <div class="day">
+                                    <span>T</span>
+                                    <div class="day-circle active"></div>
+                                </div>
+                                <div class="day">
+                                    <span>W</span>
+                                    <div class="day-circle active"></div>
+                                </div>
+                                <div class="day">
+                                    <span>T</span>
+                                    <div class="day-circle active"></div>
+                                </div>
+                                <div class="day">
+                                    <span>F</span>
+                                    <div class="day-circle active"></div>
+                                </div>
+                                <div class="day">
+                                    <span>S</span>
+                                    <div class="day-circle"></div>
+                                </div>
+                                <div class="day">
+                                    <span>S</span>
+                                    <div class="day-circle"></div>
+                                </div>
+                            </div>
+                            <p class="streak-message">You're on a roll! Keep up the good work!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="courses-section">
+                    <div class="section-header">
+                        <h2>My Enrolled Courses</h2>
+                        <button class="btn btn-outline">Browse Courses</button>
+                    </div>
+                    <div class="courses-grid dashboard-courses">
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="images/actual-course-image1.jpg" alt="Web Development">
+                                <div class="course-progress-indicator" style="width: 75%"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-top">
+                                    <div class="course-category">Technology</div>
+                                    <div class="course-progress">75%</div>
+                                </div>
+                                <h3>Web Development Fundamentals</h3>
+                                <div class="course-info">
+                                    <span><i class="fas fa-clock"></i> 12 weeks</span>
+                                    <span><i class="fas fa-book-open"></i> 24 lessons</span>
+                                </div>
+                                <div class="course-instructor">
+                                    <img src="images/avatar-placeholder.jpg" alt="Instructor">
+                                    <span>Dr. Sarah Johnson</span>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="#" class="btn btn-primary">Continue</a>
+                                    <button class="btn-icon"><i class="fas fa-bookmark"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="images/actual-course-image2.jpg" alt="Data Science">
+                                <div class="course-progress-indicator" style="width: 45%"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-top">
+                                    <div class="course-category">Data</div>
+                                    <div class="course-progress">45%</div>
+                                </div>
+                                <h3>Introduction to Data Science</h3>
+                                <div class="course-info">
+                                    <span><i class="fas fa-clock"></i> 10 weeks</span>
+                                    <span><i class="fas fa-book-open"></i> 18 lessons</span>
+                                </div>
+                                <div class="course-instructor">
+                                    <img src="images/avatar-placeholder.jpg" alt="Instructor">
+                                    <span>Prof. Michael Chen</span>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="#" class="btn btn-primary">Continue</a>
+                                    <button class="btn-icon"><i class="fas fa-bookmark"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <div class="course-image">
+                                <img src="images/actual-course-image3.jpg" alt="Mobile App Development">
+                                <div class="course-progress-indicator" style="width: 20%"></div>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-top">
+                                    <div class="course-category">Development</div>
+                                    <div class="course-progress">20%</div>
+                                </div>
+                                <h3>Mobile App Development</h3>
+                                <div class="course-info">
+                                    <span><i class="fas fa-clock"></i> 8 weeks</span>
+                                    <span><i class="fas fa-book-open"></i> 16 lessons</span>
+                                </div>
+                                <div class="course-instructor">
+                                    <img src="images/avatar-placeholder.jpg" alt="Instructor">
+                                    <span>Jennifer Taylor</span>
+                                </div>
+                                <div class="course-actions">
+                                    <a href="#" class="btn btn-primary">Continue</a>
+                                    <button class="btn-icon"><i class="fas fa-bookmark"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view-all-container">
+                        <a href="#" class="btn btn-text">View All Courses <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </section>
+
+                <section class="upcoming-section">
+                    <div class="section-header">
+                        <h2>Upcoming Deadlines</h2>
+                        <a href="#" class="btn btn-text">View Calendar <i class="fas fa-calendar-alt"></i></a>
+                    </div>
+                    <div class="upcoming-grid">
+                        <div class="deadline-card">
+                            <div class="deadline-date">
+                                <span class="day">15</span>
+                                <span class="month">MAR</span>
+                            </div>
+                            <div class="deadline-content">
+                                <h3>JavaScript Project Submission</h3>
+                                <p>Web Development Fundamentals</p>
+                                <div class="deadline-info">
+                                    <span><i class="fas fa-clock"></i> Due in 2 days</span>
+                                    <span class="priority high">High Priority</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline">Submit</button>
+                        </div>
+                        <div class="deadline-card">
+                            <div class="deadline-date">
+                                <span class="day">18</span>
+                                <span class="month">MAR</span>
+                            </div>
+                            <div class="deadline-content">
+                                <h3>Data Visualization Quiz</h3>
+                                <p>Introduction to Data Science</p>
+                                <div class="deadline-info">
+                                    <span><i class="fas fa-clock"></i> Due in 5 days</span>
+                                    <span class="priority medium">Medium Priority</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline">Start Quiz</button>
+                        </div>
+                        <div class="deadline-card">
+                            <div class="deadline-date">
+                                <span class="day">22</span>
+                                <span class="month">MAR</span>
+                            </div>
+                            <div class="deadline-content">
+                                <h3>UI Design Assignment</h3>
+                                <p>Mobile App Development</p>
+                                <div class="deadline-info">
+                                    <span><i class="fas fa-clock"></i> Due in 9 days</span>
+                                    <span class="priority low">Low Priority</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline">View Details</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="dashboard-footer">
+                <p>&copy; 2025 Gurrukul ગુરુકુળ. All Rights Reserved.</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Logout</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout from your account?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelLogout">Cancel</button>
+                <button class="btn btn-primary" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

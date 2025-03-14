@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaryakSham - Student Learning Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Gurukul ગુરુકુળ</h1>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="signup.html" class="btn btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="animate-text">Transform Your Learning Experience</h1>
+                <p class="animate-text delay-1">Access quality education anytime, anywhere. Join thousands of students already learning with us.</p>
+                <a href="signup.html" class="btn btn-primary animate-text delay-2">Get Started</a>
+            </div>
+        </section>
+
+        <!-- Course Search Section -->
+        <section class="course-search">
+            <div class="search-container">
+                <h2>Find Your Perfect Course</h2>
+                <p>Search from our library of 1000+ courses across different categories</p>
+                
+                <div class="search-box">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="courseSearch" placeholder="Search courses by name, skill, or instructor...">
+                        <button class="btn btn-primary search-btn">Search</button>
+                    </div>
+                    
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="technology">Technology</option>
+                                <option value="business">Business</option>
+                                <option value="design">Design</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="science">Science</option>
+                                <option value="language">Language</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Level</label>
+                            <select id="levelFilter">
+                                <option value="">All Levels</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Duration</label>
+                            <select id="durationFilter">
+                                <option value="">Any Duration</option>
+                                <option value="short">Short (0-4 weeks)</option>
+                                <option value="medium">Medium (5-12 weeks)</option>
+                                <option value="long">Long (13+ weeks)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Rating</label>
+                            <select id="ratingFilter">
+                                <option value="">Any Rating</option>
+                                <option value="4.5">4.5 & Up</option>
+                                <option value="4.0">4.0 & Up</option>
+                                <option value="3.5">3.5 & Up</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="featured-courses">
+            <div class="section-header">
+                <h2>Featured Courses</h2>
+                <p>Explore our most popular courses and start learning today</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/actual-course-image1.jpg" alt="Web Development">
+                        <div class="course-category">Technology</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development Fundamentals</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 3,245 students</span>
+                        </div>
+                        <p>Learn the fundamentals of web development, HTML, CSS, and JavaScript.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/actual-course-image2.jpg" alt="Data Science">
+                        <div class="course-category">Data</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Introduction to Data Science</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 2,129 students</span>
+                        </div>
+                        <p>Master data analysis, visualization, and machine learning basics.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/actual-course-image3.jpg" alt="Mobile App Development">
+                        <div class="course-category">Development</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Mobile App Development</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-user-graduate"></i> 1,876 students</span>
+                        </div>
+                        <p>Build your own mobile applications for iOS and Android platforms.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <a href="#" class="btn btn-secondary">View All Courses</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="section-header">
+                <h2>Why Choose Gurrukul ગુરુકુળ?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-laptop-code feature-icon"></i>
+                    <h3>Interactive Learning</h3>
+                    <p>Engage with interactive lessons, quizzes, and hands-on projects</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-certificate feature-icon"></i>
+                    <h3>Certified Courses</h3>
+                    <p>Earn recognized certificates upon completion of courses</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry experts with real-world experience</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your courses on any device, anytime, anywhere</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="cta-content">
+                <h2>Ready to Start Learning?</h2>
+                <p>Join thousands of students already learning on Gurrukul ગુરુકુળ platform</p>
+                <a href="signup.html" class="btn btn-primary">Sign Up Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Gurrukul ગુરુકુળ</h2>
+                <p>Transforming education for everyone.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> mehtaraushan824123@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> 9771975466</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 310 NHSRCL Vadodara, Gujrat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Gurukul ગુરુકુળ. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/course-search.js"></script>
+</body>
+</html> 
